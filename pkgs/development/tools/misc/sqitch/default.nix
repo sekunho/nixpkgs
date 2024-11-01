@@ -5,6 +5,7 @@
 , shortenPerlShebang
 , mysqlSupport ? false
 , postgresqlSupport ? false
+, sqliteSupport ? false
 , templateToolkitSupport ? false
 }:
 
@@ -13,6 +14,7 @@ let
   modules = with perlPackages; [ AlgorithmBackoff ]
     ++ lib.optional mysqlSupport DBDmysql
     ++ lib.optional postgresqlSupport DBDPg
+    ++ lib.optional sqliteSupport DBDSQLite
     ++ lib.optional templateToolkitSupport TemplateToolkit;
 in
 
